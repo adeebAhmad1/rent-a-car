@@ -12,7 +12,7 @@ import Admin_Dashboard from "./components/Admin/AdminDashboard/AdminDashboard";
 import Admin_Booking from "./components/Admin/Booking_System/Admin_Booking";
 
 import Home from "./components/Home/Home";
-import Header from "./components/hoc/Header_Footer/Header";
+import Header from "./components/layout/Header/Header";
 
 //? for user only
 import User_Signup from "./components/User/User_Signup/Signup";
@@ -29,24 +29,24 @@ function App() {
       <BrowserRouter>
         {/*! route for admin */}
 
-        <Route exact path="/admin/dashboard" component={Admin_Dashboard} />
-        <Route exact path="/admin/signup" component={Admin_Signup} />
-        <Route exact path="/admin/login" component={Admin_Login} />
-        <Route exact path="/admin/adding_car" component={Adding_Car} />
-        <Route exact path="/admin/cars_details" component={Car_Details} />
-        <Route exact path="/admin/edit_car/:carId" component={Edit_Cars}  />
-        <Route exact path="/admin/edit_booking/:bookingId" component={Edit_Bookings}  />
-        <Route exact path="/admin/bookings_details" component={Admin_Booking}  />
+        <Route exact path="/admin/dashboard" component={Admin_Dashboard} /> {/* STYLED */}
+        <Route exact path="/admin/signup" component={Admin_Signup} /> {/* STYLED */}
+        <Route exact path="/admin/login" component={Admin_Login} /> {/* STYLED */}
+        <Route exact path="/admin/adding_car" component={Adding_Car} /> {/* STYLED */}
+        <Route exact path="/admin/cars_details" component={Car_Details} /> {/* STYLED */}
+        <Route exact path="/admin/edit_car/:carId" component={Edit_Cars} /> {/* STYLED */}
+        <Route exact path="/admin/edit_booking/:bookingId" component={Edit_Bookings}  /> {/* STYLED */}
+        <Route exact path="/admin/bookings_details" component={Admin_Booking}  /> {/* STYLED */}
 
         <Route exact path="/home" component={Home} />
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/header" component={Header} /> */}
+        <Route exact path="/header" component={Header} />
 
         {/* Route for User */}
-        <Route exact path="/signup" component={User_Signup} />
-        <Route exact path="/login" component={User_Login} />
-        <Route exact path="/user/dashboard" component={User_Dashboard} />
-        <Route exact path="/user/booking" component={User_Booking} />
+        <Route exact path="/signup" component={User_Signup} /> {/* STYLED */}
+        <Route exact path="/login" component={User_Login} /> {/* STYLED */}
+        <Route exact path="/user/dashboard" component={User_Dashboard} /> 
+        <Route exact path="/user/booking" component={User_Booking} /> {/* STYLED */}
       </BrowserRouter>
     </div>
   );
