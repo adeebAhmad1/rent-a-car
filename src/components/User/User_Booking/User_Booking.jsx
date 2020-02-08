@@ -77,7 +77,7 @@ class User_Booking extends Component {
                             this.refs.date.value,
                             carDetails[this.refs.select.selectedIndex - 1].id
                           );
-                          this.popup()
+                          this.popup(1,"/user/dashboard")
                           carDetails[
                             this.refs.select.selectedIndex - 1
                           ].bookedStatus = true;
