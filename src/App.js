@@ -33,7 +33,6 @@ function App() {
         {
           //? Route for User */
         }
-
         <Route exact path="/admin/dashboard" component={Admin_Dashboard} />
         <Route exact path="/admin/signup" component={Admin_Signup} />
         <Route exact path="/admin/login" component={Admin_Login} />
