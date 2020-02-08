@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+//components
+import SideBar from "../../utils/SideBar";
+
+//for sideBar
+const linksDetails = [
+  { title: "Cars Details", link: "/admin/cars_details" },
+  { title: "Dashboard", link: "/admin/dashboard" },
+  { title: "Add Vechile", link: "/admin/adding_car" },
+  { title: "All Vechiles", link: "/admin/cars_details" }
+];
+
 class Admin_Booking extends Component {
   state = {
     bookings: []
@@ -19,14 +30,37 @@ class Admin_Booking extends Component {
         <td>{el.from}</td>
         <td>{el.to}</td>
         <td>{el.date}</td>
+
         {/* <td>{el.vechileId}</td> */}
         <td>
-          <Link
-            className="btn-wide btn-pill btn-shadow btn-hover-shine btn btn-primary btn-lg"
-            to={`/admin/edit_booking/${i}`}
-          >
-            Edit Details
-          </Link>
+          <div role="group" className="btn-group-sm btn-group">
+            {el.approved === true ? (
+              ``
+            ) : (
+              <button
+                onClick={() => {
+                  let bookings = [...this.state.bookings];
+                  bookings[i].approved = true;
+                  this.setState({
+                    bookings
+                  });
+                  localStorage.setItem(
+                    "bookings",
+                    JSON.stringify(this.state.bookings)
+                  );
+                }}
+                className="btn-shadow btn btn-primary"
+              >
+                Approve
+              </button>
+            )}
+            <Link
+              to={`/admin/edit_car/${i}`}
+              className="btn-shadow btn btn-primary"
+            >
+              Edit
+            </Link>
+          </div>
         </td>
       </tr>
     ));
@@ -36,38 +70,7 @@ class Admin_Booking extends Component {
       <div>
         <div className="app-container app-theme-gray">
           <div className="app-main">
-            <div className="app-sidebar-wrapper">
-              <div className="app-sidebar sidebar-shadow">
-                <div className="app-header__logo">
-                  <Link
-                    to="/home"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="KeroUI Admin Template"
-                    className="logo-src"
-                  ></Link>
-                  <button
-                    type="button"
-                    className="hamburger hamburger--elastic mobile-toggle-nav"
-                  >
-                    <span className="hamburger-box">
-                      <span className="hamburger-inner"></span>
-                    </span>
-                  </button>
-                </div>
-                <div className="scrollbar-sidebar scrollbar-container">
-                  <div className="app-sidebar__inner">
-                    <ul className="vertical-nav-menu">
-                      <li>
-                        <Link to="/admin/dashboard">Dashboard</Link>
-                        <Link to="/admin/adding_car">Add Car</Link>
-                        <Link to="/admin/cars_details">All Cars</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <SideBar linksDetails={linksDetails} />
             <div className="app-sidebar-overlay d-none animated fadeIn"></div>
             <div className="app-main__outer">
               <div className="app-main__inner">
@@ -115,10 +118,7 @@ class Admin_Booking extends Component {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="app-inner-layout app-inner-layout-page"
-                  // style={{ display: "block" }}
-                >
+                <div className="app-inner-layout app-inner-layout-page">
                   <div className="card-body">
                     <h5 className="card-title">
                       <b>Bookings</b>
